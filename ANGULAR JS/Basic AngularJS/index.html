@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+    .red {
+      background-color: red;
+    }
+
+    .green {
+      background-color: greenyellow;
+    }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+    }
+  </style>
+  <script src="angular.min.js"> </script>
+</head>
+
+<body ng-app="">
+
+  <h1 ng-class="{'red':price<5000,'green':price>=5000}"> Class Demo </h1>
+
+  <!-- ng-model saves variables and binds these variables with the view -->
+  <!-- {{}} - String interpolation -->
+  <input ng-model="firstname" type="text" placeholder="Enter first name"> First name is {{firstname|uppercase}}
+  <!--it as a whole is template ie static + dynamic -->
+  <br>
+  <br>
+  <input ng-model="lastname" type="text" placeholder="Enter last name"> Last name is {{lastname|uppercase}}
+  <br>
+  <br>
+
+  <input type="checkbox" ng-model="tick"> Show-hide {{tick}}
+  <div ng-show="tick">
+    <input ng-model="price" ng-init="price=0" type="text" placeholder="Enter price"> Price is {{price|currency:'&#8377'}}
+  </div>
+
+  <!-- <ul ng-init='al=[
+    {
+      "albumId": 1,
+      "id": 1,
+      "title": "accusamus beatae ad facilis cum similique qui sunt",
+      "url": "http://placehold.it/600/92c952",
+      "thumbnailUrl": "http://placehold.it/150/92c952"
+    },
+    {
+      "albumId": 1,
+      "id": 2,
+      "title": "reprehenderit est deserunt velit ipsam",
+      "url": "http://placehold.it/600/771796",
+      "thumbnailUrl": "http://placehold.it/150/771796"
+    },
+    {
+      "albumId": 1,
+      "id": 3,
+      "title": "officia porro iure quia iusto qui ipsa ut modi",
+      "url": "http://placehold.it/600/24f355",
+      "thumbnailUrl": "http://placehold.it/150/24f355"
+    },
+    {
+      "albumId": 1,
+      "id": 4,
+      "title": "culpa odio esse rerum omnis laboriosam voluptate repudiandae",
+      "url": "http://placehold.it/600/d32776",
+      "thumbnailUrl": "http://placehold.it/150/d32776"
+    },
+    {
+      "albumId": 1,
+      "id": 5,
+      "title": "natus nisi omnis corporis facere molestiae rerum in",
+      "url": "http://placehold.it/600/f66b97",
+      "thumbnailUrl": "http://placehold.it/150/f66b97"
+    },
+    {
+      "albumId": 1,
+      "id": 6,
+      "title": "accusamus ea aliquid et amet sequi nemo",
+      "url": "http://placehold.it/600/56a8c2",
+      "thumbnailUrl": "http://placehold.it/150/56a8c2"
+    },
+    {
+      "albumId": 1,
+      "id": 7,
+      "title": "officia delectus consequatur vero aut veniam explicabo molestias",
+      "url": "http://placehold.it/600/b0f7cc",
+      "thumbnailUrl": "http://placehold.it/150/b0f7cc"
+    },
+    {
+      "albumId": 1,
+      "id": 8,
+      "title": "aut porro officiis laborum odit ea laudantium corporis",
+      "url": "http://placehold.it/600/54176f",
+      "thumbnailUrl": "http://placehold.it/150/54176f"
+    },
+    {
+      "albumId": 1,
+      "id": 9,
+      "title": "qui eius qui autem sed",
+      "url": "http://placehold.it/600/51aa97",
+      "thumbnailUrl": "http://placehold.it/150/51aa97"
+    },
+    {
+      "albumId": 1,
+      "id": 10,
+      "title": "beatae et provident et ut vel",
+      "url": "http://placehold.it/600/810b14",
+      "thumbnailUrl": "http://placehold.it/150/810b14"
+    },
+    {
+      "albumId": 1,
+      "id": 11,
+      "title": "nihil at amet non hic quia qui",
+      "url": "http://placehold.it/600/1ee8a4",
+      "thumbnailUrl": "http://placehold.it/150/1ee8a4"
+    },
+    {
+      "albumId": 1,
+      "id": 12,
+      "title": "mollitia soluta ut rerum eos aliquam consequatur perspiciatis maiores",
+      "url": "http://placehold.it/600/66b7d2",
+      "thumbnailUrl": "http://placehold.it/150/66b7d2"
+    },
+    {
+      "albumId": 1,
+      "id": 13,
+      "title": "repudiandae iusto deleniti rerum",
+      "url": "http://placehold.it/600/197d29",
+      "thumbnailUrl": "http://placehold.it/150/197d29"
+    }]'>
+        <li ng-repeat="a in al">
+            {{a.title}} <img src="{{a.url}}" class="icon">
+        </li>
+    </ul> -->
+
+  <br>
+  <br>
+
+  
+  <hr>
+
+  <select ng-model="limit">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+  </select>
+
+  <select ng-model="sort">
+    <!-- <option>price</option>    match this name with the key of the json 
+     <option>name</option> -->
+    <option value="price"> Sort by price </option>
+    <!-- here we put the key name in value attribute-->
+    <option value="name"> Sort by name </option>
+
+  </select>
+  <input type="checkbox" ng-model="rev">
+
+  <!-- <input type="text" ng-model="mysearch" placeholder="Type to search">  -->
+  <input type="text" ng-model="mysearch.price" placeholder="Type to search">
+  <ul ng-init='al={"mobiles":[{"id":1001,"name":"Samsung Mobile","price":30000,"url":"http://c2c.sulekhalive.com/lcproducts/mobiles/images/samsung/album/large/samsung-z3(2).jpg"},
+    {"id":1002,"name":"Apple Mobile","price":40000,"url":"https://4.imimg.com/data4/LY/WP/GLADMIN-8934545/apple-mobiles-500x500.jpg"},
+    {"id":1003,"name":"Lg Mobile","price":20000,"url":"http://www.lg.com/uk/images/mobile-phones/MD05609550/stylus-350.jpg"},
+    {"id":1004,"name":"MI Mobile","price":10000,"url":"https://www.91-img.com/pictures/xiaomi-mi-5s-mobile-phone-large-1.jpg"}]}'>
+    <li ng-repeat="a in al.mobiles|filter:mysearch|orderBy:sort:rev|limitTo:limit">
+      {{a.name}}
+      <img ng-src="{{a.url}}" class="icon"> {{a.price}}
+    </li>
+  </ul>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+var t="Hello,How are you,I am Good";
+undefined
+var arr =t.split(",");
+undefined
+arr;
+(3) ["Hello", "How are you", "I am Good"]
+for (let a of arr){
+  console.log(a);
+}
+VM198:2 Hello
+VM198:2 How are you
+VM198:2 I am Good
+undefined
+varv d=[10,20,30,40,50];
+VM214:1 Uncaught SyntaxError: Unexpected identifier
+var d=[10,20,30,40,50];
+undefined
+d.map(w=>w*w);
+(5) [100, 400, 900, 1600, 2500]
+//charCodeat in string is used to work on ASCII code.
+undefined

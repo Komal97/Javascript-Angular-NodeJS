@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+
+
+    <script>
+     var app=angular.module("myapp",[]);
+
+     app.controller("myctrl",['$scope',function(s){         //converting sec argument into array so that while
+                             // minifying, it prevents some changes happened into $scope or some inbuilt object
+
+         console.log("This is ",this);   //here 'this' belongs to controller (finally to window)
+         s.firstname="Ram";
+         s.lastname="kumar";
+         s.post=[{
+            id:1,name:"Ram",url:'',
+         }]
+         s.show=function(){
+            //  $scope.message="Hello user";
+            this.message="Hello user";                   //here 'this' belongs to scope 
+         }
+     }]);
+
+    //these directive cant apply logic
+     app.directive("tcsHeader",function(){             //return object same as factory
+         var obj={
+           templateUrl:'header.html',
+           controller:function($scope){
+               $scope.print=function(){
+                   $scope.msg="This is my directive";
+               }
+           }
+        //    template:'<h1> This is header </h1>'
+         }
+         return obj;
+     })
+    </script>
+</head>
+<body ng-app="myapp">
+
+    <div ng-controller="myctrl">
+        <button ng-click="show()"> Click me </button>  
+        <h3 ng-model="message"> {{message}} </h3>
+        <tcs-header> </tcs-header>              <!-- this directive is in this scope of controller -->
+    </div>
+    <!-- CAMEL CASE 
+    tcs-header = tcsHeader OR
+    tcs:header = tcsHeader OR
+    tcs_header = tcsHeader -->
+         
+</body>
+</html>

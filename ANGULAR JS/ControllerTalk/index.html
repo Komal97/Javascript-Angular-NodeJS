@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="bower_components/angular/angular.min.js"> </script>
+
+
+    <script>
+        
+     const app2=angular.module("myapp2",[]);
+     const app=angular.module("myapp",["myapp2"]);
+
+    // COMMON FACTORY (third method)
+     app2.factory("myfactory",function(){
+         var object={
+             x:100
+         }
+         return object;
+     })
+
+     app.controller("ctrl1",($scope,$rootScope,myfactory)=>{
+    // ROOTSCOPE METHOD (second method)
+    
+    //rootscope is the another method i.e. another form of inheritance
+    //below line will not work as controller first loads till then it has got no value
+
+        $scope.typeIt=function(){
+            $rootScope.name=$scope.firstname;
+            console.log("Change Fire....");
+        }
+         $rootScope.city="Delhi";
+         console.log("Controller 1 is Done ", $scope.firstname);
+
+     //third method
+
+        $scope.PlusX=function(){
+            myfactory.x=myfactory.x+1;
+        }
+     });
+
+     app.controller("ctrl2",($scope,myfactory)=>{
+        $scope.getX=function(){
+            $scope.xvalue=myfactory.x;
+        }
+        console.log("Controller 2 is Done ", $scope.name);
+    });
+     
+    </script>
+ 
+</head>
+<body ng-app="myapp">
+    
+<!-- 
+    //INHERITANCE METHOD 
+
+     <div ng-controller="ctrl1">               // parent scope and it can give value to child controller only 
+       <input ng-model="firstname" type="text" placeholder="Type First Name"> {{firstname}}
+
+       //make child div first approach to do sharing ... scope of ctrl2 is lesser than ctrl1... outer scope can 
+         give value to inner scope but vice-versa is not true...
+
+       // make div as child having other Controller 
+       <div ng-controller="ctrl2">           //child scope and it cannot give value to its parent controller 
+            <input ng-model="lastname" type="text" placeholder="Type Last Name"> {{firstname}} &nbsp;&nbsp;{{lastname}}
+        </div>
+    </div>
+-->
+
+    <div ng-controller="ctrl1">              
+        <input ng-change="typeIt()" ng-model="firstname" type="text" placeholder="Type First Name"> {{firstname}}
+        <br><br>
+        <button ng-click="PlusX()"> PluX </button>
+    </div> 
+    
+    <hr>
+    <div ng-controller="ctrl2">       
+        <input ng-model="lastname" type="text" placeholder="Type Last Name"> {{name}} &nbsp;{{lastname}} 
+        <br>{{city}}
+        <br><br>
+        <button ng-click="getX()"> GetX </button> {{xvalue}}  
+    </div>
+
+</body>
+</html>

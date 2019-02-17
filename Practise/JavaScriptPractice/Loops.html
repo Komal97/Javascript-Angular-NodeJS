@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!--
+    <script>
+        var number = Number(prompt("Enter the number", ""));
+        start = 0;
+        while (start <= number) {
+            document.write(start + "<br>");
+            start = start + 2;
+            if(start == 100){
+                break;
+            }
+        }
+    </script>
+-->
+
+    <!--
+    <script>
+        var number = Number(prompt("Enter the number", ""));
+        start = 0;
+        while (start <= number) {
+            start++;
+            if(start == 100){
+                break;
+            }
+            
+            if (start % 2 == 0) {
+                continue;
+            }
+            
+            document.write(start + "<br>");
+            
+        }
+    </script>
+-->
+
+    <!--
+    <script>
+        var number = Number(prompt("Enter the number 1, 2, 3", ""));
+        if (number == 1) {
+            alert("January");
+        } else if (number == 2) {
+            alert("February");
+        } else if (number == 3) {
+            alert("March")
+        } else {
+            alert("Unknown Month");
+        }
+    </script>
+-->
+
+    <!--
+    <script>
+        var number = Number(prompt("Enter the number 1, 2, 3", ""));
+        switch(number){
+            case 1:
+                alert("January");
+                break;
+                
+            case 2:
+                alert("February");
+                break;
+                
+            case 3:
+                alert("March");
+                break;
+                
+            default:
+                alert("unknown month");
+        }
+    </script>
+-->
+
+    <!--
+    <script>
+        var number = Number(prompt("Enter the number 1, 2, 3", ""));
+        alert(number == 1 ? "January" : number == 2 ? "February" : number == 3 ? "March" : "unknown month");
+    </script>
+-->
+
+    <script>
+        var number = Number(prompt("Enter the number less than 100", ""));
+        for (var i = 0; i <= number; i++) {
+            if(i == 100){
+                break;
+            }
+            if (i % 2 == 0) {
+                document.write(i + "<br>");
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+</html>

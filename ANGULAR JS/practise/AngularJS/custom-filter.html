@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="angular.min.js"></script>
+    <script>
+        var myApp = angular.module("myModule", []);
+
+        myApp.filter("gender", function() {
+            return function(gender) {
+                switch (gender) {
+                    case 1:
+                        return "Male";
+
+                    case 2:
+                        return "Female";
+
+                    case 3:
+                        return "Not Disclosed";
+                };
+            };
+        });
+
+        myApp.controller("myController", function($scope) {
+            var employees = [{
+                    name: "Ben",
+                    gender: 1,
+                    salary: 55000
+                },
+                {
+                    name: "Sara",
+                    gender: 2,
+                    salary: 68000
+                },
+                {
+                    name: "Mark",
+                    gender: 1,
+                    salary: 57000
+                },
+                {
+                    name: "Pam",
+                    gender: 2,
+                    salary: 53000
+                },
+                {
+                    name: "Todd",
+                    gender: 3,
+                    salary: 60000
+                }
+            ];
+            $scope.employee = employees;
+
+        });
+    </script>
+</head>
+
+<body ng-app="myModule">
+    <div ng-controller="myController">
+        <table border="1" cellpadding="15">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Gender</td>
+                    <td>Salary</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="emp in employee">
+                    <td>{{emp.name}}</td>
+                    <td>{{emp.gender | gender}}</td>
+                    <td>{{emp.salary}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

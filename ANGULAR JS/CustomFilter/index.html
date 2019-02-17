@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script>
+      var app=angular.module("myapp",[]);
+
+      //this is formatting and it is done in end and factory contains logic so we cannot keep this in factory
+      app.filter("initcap",function(){            //filter always returns function
+           return function(str,x,y=3){
+         // return str.charAt(0).toUpperCase()+str.substring(1).toLowerCase();
+         // return str.charAt(0).toUpperCase()+str.substring(1);
+            return str.charAt(0).toUpperCase()+str.substring(x,y);
+           }
+      })
+    </script>
+
+</head>
+<body ng-app="myapp">
+    <input type="text" ng-model="name">
+    <!-- here name represents str parameter of filter function -->
+    <!-- initcap("ram"); -->     
+    {{name|initcap}}                 
+    {{name|uppercase}} 
+    {{name|lowercase|initcap}}
+    {{name|lowercase|initcap:1:3}}
+    <!-- '1' is index and '3' is count i.e position that is in substring 1st argument is index of string starting from 0 and 
+      second argument  is position that is upto which the string is needed -->
+</body>
+</html>

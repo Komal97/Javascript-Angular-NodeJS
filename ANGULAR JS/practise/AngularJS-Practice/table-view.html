@@ -1,0 +1,23 @@
+<table border cellpadding="10">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>DOB</th>
+            <th>Gender</th>
+            <th>Salary</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="emp in employee | orderBy:ascdsc">
+            <td ng-bind="emp.name"></td>
+            <td ng-bind="emp.dob | date:'dd/MM/yy'"></td>
+            <td ng-bind="emp.gender | gender"></td>
+            <td ng-bind="emp.salary"></td>
+            <td ng-bind="emp.address"></td>
+        </tr>
+    </tbody>
+</table>
+
+
+

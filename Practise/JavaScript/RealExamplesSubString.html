@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function getEmailApart(){
+            var email = document.querySelector("#email").value;
+            var emailPart = email.substring(0, email.indexOf("@"));
+            var domainPart = email.substring(email.indexOf("@+1"));
+            document.querySelector("#emailpart").value = emailPart;
+            document.querySelector("#domainpart").value = domainPart;
+            
+        }
+        
+        function getTopDomain(){
+            var url = document.querySelector("#url").value;
+            var domain = url.substring(url.lastIndexOf(".")+1);
+            document.querySelector("#domain").value = domain;
+        }
+        
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Email Address</td>
+            <td><input type="text" id="email"></td>
+        </tr>
+        <tr>
+            <td>Email Part</td>
+            <td><input type="text" id="emailpart"></td>
+        </tr>
+        <tr>
+            <td>Domain Part</td>
+            <td><input type="text" id="domainpart"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="button" onclick="getEmailApart()" value="Get Email & Domain Parts"></td>
+        </tr>
+    </table>
+    <br><hr><br>
+    <table>
+        <tr>
+            <td>Url</td>
+            <td><input type="text" id="url"></td>
+        </tr>
+        <tr>
+            <td>Domain Name</td>
+            <td><input type="text" id="domain"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="button" value="Get Top Domain" onclick="getTopDomain()"></td>
+        </tr>
+    </table>
+</body>
+</html>

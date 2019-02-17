@@ -1,0 +1,170 @@
+var x=[10,20,30,40,50];
+undefined
+
+typeof x;
+"object"
+
+x instanceof Array;
+true
+
+function myprint(y){
+ console.log("Y is "+y);
+}
+undefined
+
+myprint(100);
+VM177:2 Y is 100
+undefined
+
+x.forEach(myprint)
+VM177:2 Y is 10
+VM177:2 Y is 20
+VM177:2 Y is 30
+VM177:2 Y is 40
+VM177:2 Y is 50
+undefined
+
+function myprint(y){
+ console.log("Y is "+y);
+}
+undefined
+
+x.forEach(myprint)
+VM314:2 Y is 10
+VM314:2 Y is 20
+VM314:2 Y is 30
+VM314:2 Y is 40
+VM314:2 Y is 50
+undefined
+
+x.forEach(function(y){
+ console.log("Y is :"+y);
+});
+VM318:2 Y is :10
+VM318:2 Y is :20
+VM318:2 Y is :30
+VM318:2 Y is :40
+VM318:2 Y is :50
+undefined
+
+var buttonArr=document.getElementsByTagName("button");
+undefined
+
+typeof buttonArr;
+"object"
+
+buttonArr instanceof Array;
+false
+
+buttonArr instanceof HTMLCollection
+true
+
+function whoAmI(){
+  console.log("My Name is :"+this.name);
+}
+undefined
+
+window.whoAmI();
+VM517:2 My Name is :
+undefined
+
+function whoAmI(){
+  console.log("this is "+this);
+  console.log("My Name is :"+this.name);
+}
+undefined
+
+window.name;
+""
+
+name="Komal"
+"Komal"
+
+window.name;
+"Komal"
+
+function whoAmI(){
+  console.log("this is "+this);
+  console.log("My Name is :"+this.name);
+}
+undefined
+
+window.whoAmI();
+VM656:2 this is [object Window]
+VM656:3 My Name is :Komal
+undefined
+
+var object={ name :"Ram"}
+undefined
+
+window.name
+"Komal"
+
+object.name
+"Ram"
+
+window.object.name
+"Ram"
+
+console.dir(whoAmI);
+VM736:1 ƒ whoAmI()arguments: nullcaller: nulllength: 0name: "whoAmI"prototype: {constructor: ƒ}__proto__: ƒ ()apply: ƒ apply()arguments: (...)bind: ƒ bind()call: ƒ call()caller: (...)constructor: ƒ Function()length: 0name: ""toString: ƒ toString()Symbol(Symbol.hasInstance): ƒ [Symbol.hasInstance]()get arguments: ƒ ()set arguments: ƒ ()get caller: ƒ ()set caller: ƒ ()__proto__: Object[[FunctionLocation]]: <unknown>[[Scopes]]: Scopes[0][[FunctionLocation]]: VM656:1[[Scopes]]: Scopes[1]
+undefined
+
+whoAmI.apply(object);
+VM656:2 this is [object Object]
+VM656:3 My Name is :Ram
+undefined
+
+window instanceof Window;
+true
+
+whoAmI.call(object);
+VM656:2 this is [object Object]
+VM656:3 My Name is :Ram
+undefined
+
+whoAmI.call(object,"Kumar","Sharma");
+VM831:2 this is [object Object]
+VM831:3 My Name is :Ram
+undefined
+
+function whoAmI(middlename,lastname){
+  console.log("this is "+this);
+  console.log("My Name is :"+this.name+" "+middlename+" "+lastname);
+}
+undefined
+
+whoAmI.call(object,"Kumar","Sharma");
+VM902:2 this is [object Object]
+VM902:3 My Name is :Ram Kumar Sharma
+undefined
+
+whoAmI.apply(object,["Kumar","Sharma"]);
+VM902:2 this is [object Object]
+VM902:3 My Name is :Ram Kumar Sharma
+undefined
+
+var fn=whoAmI.bind(object);
+undefined
+
+fn("kumar","verma");
+VM902:2 this is [object Object]
+VM902:3 My Name is :Ram kumar verma
+undefined
+fn("kumar","sharma");
+VM902:2 this is [object Object]
+VM902:3 My Name is :Ram kumar sharma
+undefined
+
+buttonArr;
+HTMLCollection(9) [button, button, button, button, button, button, button, button, button]
+Array;
+ƒ Array() { [native code] }
+
+Array.prototype;
+[constructor: ƒ, concat: ƒ, pop: ƒ, push: ƒ, shift: ƒ, …]
+
+Array.prototype.forEach.call(buttonArr,(button)=>button.innerHTML="ACCESS")
+VM1190:1 Uncaught ReferenceError: buttonArr is not defined
+    at <anonymous>:1:30
+(anonymous) @ VM1190:1

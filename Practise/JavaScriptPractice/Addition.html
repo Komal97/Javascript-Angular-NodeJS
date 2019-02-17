@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function add() {
+            var num1 = document.getElementById("fnum").value;
+            if (num1 == "") {
+                alert("First Number Is Required");
+                return;
+            }
+
+            num1 = parseFloat(num1);
+
+            if (isNaN(num1)) {
+                alert("Please Provide A Valid Number");
+                return;
+            }
+
+            var num2 = document.getElementById("snum").value;
+            if (num2 == "") {
+                alert("Second Number Is Required");
+                return;
+            }
+
+            num2 = parseFloat(num2);
+
+            if (isNaN(num2)) {
+                alert("Please Provide A Valid Number");
+                return;
+            }
+
+            var res = num1 + num2;
+            
+            document.getElementById("result").value = res;
+        }
+    </script>
+</head>
+
+<body>
+    <table border>
+        <tr>
+            <td>First Number</td>
+            <td><input type="text" id="fnum"></td>
+        </tr>
+        <tr>
+            <td>Second Number</td>
+            <td><input type="text" id="snum"></td>
+        </tr>
+        <tr>
+            <td>Result</td>
+            <td><input type="text" id="result"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="button" value="Add" onclick="add()"></td>
+        </tr>
+    </table>
+</body>
+</html>

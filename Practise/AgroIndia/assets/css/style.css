@@ -1,0 +1,66 @@
+#wrapper .page-banner {
+    position: relative;
+}
+
+#wrapper .page-banner:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#wrapper .page-banner .page-banner-title {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    left: 120px;
+    z-index: 9;
+}
+
+#wrapper .page-banner img {
+    height: 200px;
+    object-fit: cover;
+}
+
+#wrapper main .book-page-section .book-container .book-img img {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+}
+
+#wrapper main .book-page-section .book-container {
+    padding: 15px 0px;
+    width: 280px;
+    margin: 0 auto;
+}
+
+#wrapper main .book-page-section .book-container:hover {
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+#wrapper main .contact-us-section form input{
+    border-radius: 0;
+}
+
+#wrapper main .contact-us-section form textarea{
+    border-radius: 0;
+}
+
+#wrapper main .contact-us-section form input::placeholder,
+#wrapper main .contact-us-section form textarea::placeholder{
+    font-size: 14px;
+}
+
+#wrapper main .contact-us-section form button{
+    background-color: #4A8741;
+    border-color: #4A8741;
+    height: 40px;
+}
+
+#wrapper main .dealer-section .bg-success{
+    background-color: #4A8741 !important;
+}

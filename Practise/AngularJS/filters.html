@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="angular.min.js"></script>
+    <script src="filters.js"></script>
+    <style>
+        table th {
+            position: relative;
+        }
+
+        .arrow-down {
+            position: absolute;
+            top: 50%;
+            margin-left: 20px;
+            border-top: 5px solid red;
+            border-bottom: 5px solid transparent;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+        }
+
+        .arrow-up {
+            position: absolute;
+            top: 35%;
+            margin-left: 20px;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid red;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+        }
+        
+        table th{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body ng-app="myModule">
+    <!--
+    <div ng-controller="myController">
+        <span style="padding: 20px 0px; display: inline-block;">Display The Number of Rows : <input type="number" min="2" max="6" ng-model="rowLimit" style="width: 100px; height: 25px; padding: 5px;"></span>
+        <table border="1" cellpadding="15" style="border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Bate Of Birth</th>
+                    <th>Gender</th>
+                    <th>Salary</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="emp in employee | limitTo:rowLimit">
+                    <td>{{emp.name | uppercase}}</td>
+                    <td>{{emp.dob | date:"dd/MM/yyyy"}}</td>
+                    <td>{{emp.gender | lowercase}}</td>
+                    <td>{{emp.salary | number:2}}</td>
+                    <td>{{emp.salary | currency}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+-->
+
+    <!--
+    <div ng-controller="myController">
+        <span style="padding: 20px 0px; display: inline-block;">Display The Number of Rows : 
+            <select name="" id="" ng-model="sortColumn">
+            <option value="name">Name ASC</option>
+            <option value="dob">DOB ASC</option>
+            <option value="gender">Gender ASC</option>
+            <option value="-salary">Salary DESC</option>
+            </select>
+        </span>
+        <table border="1" cellpadding="15" style="border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Bate Of Birth</th>
+                    <th>Gender</th>
+                    <th>Salary</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="emp in employee | orderBy:sortColumn">
+                    <td>{{emp.name}}</td>
+                    <td>{{emp.dob | date:"dd/MM/yyyy"}}</td>
+                    <td>{{emp.gender}}</td>
+                    <td>{{emp.salary}}</td>
+                    <td>{{emp.salary}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+-->
+
+
+    <div ng-controller="myController">
+        <table border="1" width="100%" cellpadding="15" style="border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th ng-click="sortData('name')">Name <span ng-class="getSortClass('name')"></span></th>
+                    <th ng-click="sortData('dob')">Bate Of Birth <span ng-class="getSortClass('dob')"></span></th>
+                    <th ng-click="sortData('gender')">Gender <span ng-class="getSortClass('gender')"></span></th>
+                    <th ng-click="sortData('salary')">Salary <span ng-class="getSortClass('salary')"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="emp in employee | orderBy:sortColumn:reverseSort">
+                    <td>{{emp.name}}</td>
+                    <td>{{emp.dob | date:"dd/MM/yyyy"}}</td>
+                    <td>{{emp.gender}}</td>
+                    <td>{{emp.salary}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

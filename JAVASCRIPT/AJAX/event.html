@@ -1,0 +1,70 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Event </title>
+
+    <script>
+        
+        function doAjax(fn,method,url){
+            
+            var domain=document.querySelector("#domain").value;
+            url=url+domain;
+            //domain-name/uri/parameter
+            //uri-uniform resource identifier used to get inside resource of domain-name
+            //httpreq is used to fetch json data of this web-service
+            // .open("method","url")
+            //get data is seen is address bar but send data is wrapped in the function.. 
+            //'get' is for large data and post is for small secure data
+
+            var xmlHttpReq=new XMLHttpRequest(); //used to retrieve data from server without refreshing page
+            xmlHttpReq.open(method,url);
+            xmlHttpReq.onreadystatechange=function(){
+               console.log("state is : ",xmlHttpReq.readyState);
+               if(xmlHttpReq.readyState==4 && xmlHttpReq.status==200){
+                  fn(xmlHttpReq.responseText);  //responseText returns DOMString and contains response to the request
+               }
+             }
+             xmlHttpReq.send(null);      //first we have to send something and null means data sending to server
+             console.log("Send call...");
+        }
+
+        function printDetails(object){
+            var obj=JSON.parse(object);
+            document.querySelector("#msg").innerHTML=" IP is :"+obj.ip+" and Country code is : "+obj.country_code;
+        }
+
+        function dowork(){
+            console.log("Start...");
+            // for(let i=1;i<1000000;i++){       
+            //     for(let j=1;j<100000;j++){
+            //     }
+            // }
+            setTimeout(big,7000);          //setTimeout , setInterval , AJAX = 3 methods for Async call
+            console.log("End...");
+        }
+
+        function big(){                      //to avoid hanging we put them heavy calc in a function and call it after a particular time
+            for(let i=1;i<1000000;i++){       
+                 for(let j=1;j<100000;j++){
+                 }
+           }
+        }
+
+        var counter=1;
+        function sayHello(){
+          document.querySelector("#msg").innerHTML="Hello "+counter;
+          counter++;
+        }
+    </script>
+</head>
+<body>
+    <p id="msg" style="margin:10px"></p>
+    <input type="=text" id="domain" placeholder=" Enter Domain Name" style="margin:10px"><br>
+    <button onclick="doAjax(printDetails,'GET','http://freegeoip.net/json/')"> AJAX </button>
+    <button onclick="sayHello()"> Say Hello </button>
+    <button onclick="dowork()"> Do Work </button>
+</body>
+</html>

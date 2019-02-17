@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="libs/angular.min.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/factory.js"></script>
+    <script src="js/controller.js"></script>
+
+</head>
+
+<!-- 'n' number of controllers but ng-app is only one becoz it kickstarts/bootstrap your app once -->
+
+<body ng-app="myapp" ng-controller="initctrl">         <!-- binding module "app" to our app -->
+    <input type="text" ng-model="firstname" placeholder="Type first name">
+    <br><br>
+    <input type="text" ng-model="lastname" placeholder="Type last name"><br><br>
+    <button ng-click="fullName()"> Show full name </button>
+    <h3>  Full name is {{fullname}}</h3>
+</body>
+</html>

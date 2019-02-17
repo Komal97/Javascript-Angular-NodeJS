@@ -1,0 +1,59 @@
+#wrapper .header-upper{
+    padding: 10px 0px;
+}
+
+#wrapper .header-upper .logo .brand-name h2{
+   color: #4A8741;
+}
+
+#wrapper .header-upper .logo img{
+    width: 60px;
+    margin-right: 10px;
+}
+
+#wrapper .header-upper .contact-details ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#wrapper .header-upper .contact-details ul li{
+    display: inline-block;
+    margin-left: 30px;
+}
+
+#wrapper .header-upper .contact-details ul li i{
+    color: #4A8741;;
+    font-size: 30px;
+    vertical-align: middle;
+    padding-right: 10px;
+}
+
+#wrapper .header-upper .contact-details ul li:first-child{
+    margin-left: 0px;
+}
+
+#wrapper .header-bottom .navbar{
+    background-color: #4A8741 !important;
+}
+
+#wrapper .header-bottom .navbar .nav-item .nav-link{
+    color: #fff;
+    padding: 8px 30px;
+}
+
+#wrapper .header-bottom .navbar .dropdown-menu{
+    background-color: #4A8741 !important;
+}
+
+#wrapper .header-bottom .navbar .dropdown-menu >a {
+    color: #fff;
+}
+
+#wrapper .header-bottom .navbar .dropdown a:focus{
+    outline: none;
+}
+
+#wrapper .header-bottom .navbar .dropdown-menu >a:hover{
+    background-color: #A9BE2A;
+}

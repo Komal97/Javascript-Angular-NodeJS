@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            .size{
+                width: 100px;
+                height: 100px;
+            }
+           </style>
+       
+           <script>
+
+            function asyncCall(){
+
+         /* this promise make async call behave as sync because here inside function will not run until 
+            Promise object didnt get filled up
+            Promise object always keeps referance of the returned value.
+            The caveat being that the actual data is not available yet.
+			
+            It will become available when the request completes and a response comes back from the web service. 
+            In the meantime the Promise object acts like a proxy to the actual data.
+            Furthermore, you can attach callbacks to the Promise object which will be called once the actual data is available.
+			
+            corresponding to resolve is then and reject is catch.
+        */
+                var pr=new Promise((resolve,reject)=>{  //callbacks attached with Promise object
+                    //Promise object which represents the data that will be returned by the web service in future.
+                    
+                    console.log("First line..")
+                    var searchbox=document.querySelector("#search").value;
+                    var xmlHttpRqst=new XMLHttpRequest();
+                    var url="http://api.giphy.com/v1/gifs/search?q="+searchbox+"&api_key=dc6zaTOxFJmzC";
+                    xmlHttpRqst.open("GET",url);
+                    xmlHttpRqst.onreadystatechange=function(){
+                        if(xmlHttpRqst.readyState==4 && xmlHttpRqst.status==200){
+                            console.log("Done...");
+                            drawimages(xmlHttpRqst.responseText);
+                            resolve("Done");
+                        }
+                    }
+                    xmlHttpRqst.send(null);
+                    console.log("Last line ...")
+                });
+
+                pr.then((data)=>console.log("data is ",data)).catch(err=>console.log("Error is ",err));
+            }
+            //  function ajax(){
+            //      var searchbox=document.querySelector("#search").value;
+            //      var url="http://api.giphy.com/v1/gifs/search?q="+searchbox+"&api_key=dc6zaTOxFJmzC";
+            //      var xmlHttpRqt=new XMLHttpRequest();
+            //      xmlHttpRqt.open("GET",url);
+            //      xmlHttpRqt.onreadystatechange=function(){
+            //          if(xmlHttpRqt.readyState==4 && xmlHttpRqt.status==200){
+            //              drawimages(xmlHttpRqt.responseText);
+            //          }
+            //      } 
+            //      xmlHttpRqt.send(null);
+            //  }
+       
+             function drawimages(json){
+               document.querySelector("#output").innerHTML=" ";
+                var object=JSON.parse(json);
+                object.data.forEach((currentImage)=>{
+                    let img=document.createElement("img");
+                    img.src=currentImage.images.original.url;
+                    img.className="size";
+                    document.querySelector("#output").appendChild(img);
+                });
+             }
+           </script>
+</head>
+<body>
+        <h1> PROMISE CONCEPT </h1>
+        <input type="text" id="search" placeholder="Type to search" >
+        <button onclick="asyncCall()"> Call T </button>
+        <div id="output"> </div>
+</body>
+</html>

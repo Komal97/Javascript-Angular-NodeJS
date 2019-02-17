@@ -1,0 +1,10 @@
+<ul ng-repeat="emp in employee">
+    <li>{{emp.name}}
+        <ul>
+            <li ng-bind="emp.dob | date:'dd/MM/yy'"></li>
+            <li ng-bind="emp.gender | gender"></li>
+            <li ng-bind="emp.salary"></li>
+            <li ng-bind="emp.address"></li>
+        </ul>
+    </li>
+</ul>

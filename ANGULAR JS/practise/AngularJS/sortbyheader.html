@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="angular.min.js"></script>
+    <script>
+        var myApp = angular.module("myModule", []);
+        myApp.controller("myController", function($scope) {
+            var employees = [{
+                    Name: "Sunny",
+                    Dob: new Date("July 20, 1998"),
+                    Gender: "Male",
+                    Salary: "20000.88"
+                },
+                {
+                    Name: "Suresh",
+                    Dob: new Date("18 February, 1994"),
+                    Gender: "Male",
+                    Salary: "18000.88"
+                },
+                {
+                    Name: "Rajkumar",
+                    Dob: new Date("01 August, 1992"),
+                    Gender: "Male",
+                    Salary: "12000.88"
+                },
+                {
+                    Name: "Khusbu",
+                    Dob: new Date("25 July, 1991"),
+                    Gender: "Female",
+                    Salary: "28000.88"
+                },
+                {
+                    Name: "Mansi",
+                    Dob: new Date("15 August, 1995"),
+                    Gender: "Female",
+                    Salary: "50000.88"
+                }
+            ];
+            $scope.employee = employees;
+
+            $scope.colSort = "Name";
+            $scope.revSort = false;
+            $scope.headSort = function(colName) {
+                $scope.revSort = ($scope.colSort == colName) ? !$scope.revSort : false;
+                $scope.colSort = colName;
+            };
+
+            $scope.changeArrow = function(className) {
+                if ($scope.colSort == className) {
+                    return $scope.revSort ? 'arrow-down' : 'arrow-up'
+                }
+                return '';
+            };
+        });
+    </script>
+    <style>
+        table th {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .arrow-down {
+            position: absolute;
+            top: 50%;
+            margin-left: 20px;
+            border-top: 5px solid red;
+            border-bottom: 5px solid transparent;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+        }
+
+        .arrow-up {
+            position: absolute;
+            top: 35%;
+            margin-left: 20px;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid red;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+        }
+    </style>
+</head>
+
+<body ng-app="myModule">
+    <div ng-controller="myController">
+        <table border cellpadding="15" width="50%">
+            <thead>
+                <tr>
+                    <th ng-click="headSort('Name')">Name <span ng-class="changeArrow('Name')"></span></th>
+                    <th ng-click="headSort('Dob')">DOB <span ng-class="changeArrow('Dob')"></span></th>
+                    <th ng-click="headSort('Gender')">Gender <span ng-class="changeArrow('Gender')"></span></th>
+                    <th ng-click="headSort('Salary')">Salary <span ng-class="changeArrow('Salary')"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="emp in employee | orderBy:colSort:revSort">
+                    <td>{{emp.Name}}</td>
+                    <td>{{emp.Dob | date:"dd/MM/yy"}}</td>
+                    <td>{{emp.Gender}}</td>
+                    <td>{{emp.Salary}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

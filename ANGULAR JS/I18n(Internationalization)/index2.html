@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="angular.min.js"></script>
+    <!--<script src="angular/i18n/angular-locale_en-us.js"></script>
+    <script src="angular/i18n/angular-locale_hi-in.js"></script>-->
+    <script src="tmhDynamicLocale.min.js"></script>
+
+    <script>
+
+    //this module is used to define the format of currency , date etc according to country
+    //all language files should be in angular->i18n folder ,only this library of tmhDynamicLocale can be used
+     var app=angular.module("myapp",['tmh.dynamicLocale']);
+
+     app.controller("ctrl",function($scope,tmhDynamicLocale){
+        tmhDynamicLocale.set('es-es');
+        $scope.today=new Date();
+        $scope.salary=9999021;
+     })
+    </script>
+    <title>Document</title>
+</head>
+
+<body ng-app="myapp" ng-controller="ctrl">
+    <!-- new Date() gives date as well as time so to extract only date , we use 'date' filter -->
+    {{today|date}}          
+    <br>
+    {{salary|currency}} your balance is {{salary}}
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="angular.min.js"></script>
+    <script src="controller.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+    <style>
+        img {
+            width: 60px;
+            height: 80px;
+            object-fit: cover;
+        }
+
+    </style>
+</head>
+
+<body ng-app="myModule">
+    <div class="container" ng-controller="myController">
+        <table class="border table mt-5">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                    <th>Phone Number</th>
+                    <th>Image Url</th>
+                    <th>Controls</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="member in memberList">
+                    <td>{{member.id}}</td>
+                    <td>{{member.fname}}</td>
+                    <td>{{member.lname}}</td>
+                    <td>{{member.email}}</td>
+                    <td>{{member.age}}</td>
+                    <td>{{member.phone}}</td>
+                    <td> <img ng-src="{{member.img}}" alt=""></td>
+                    <td>
+                        <input type="button" ng-click="edit(member.id)" value="Edit" class="btn btn-primary">
+                        <input type="button" ng-click="delete(member.id)" value="Delete" class="btn btn-danger">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br><br>
+        <h2>Product Information</h2>
+        <table class="border table mt-5">
+            <tr>
+                <td>Id</td>
+                <td><input type="text" ng-model="id" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td><input type="text" ng-model="fname" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td><input type="text" ng-model="lname" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" ng-model="email" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td><input type="text" ng-model="age" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input type="text" ng-model="phone" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Image Url</td>
+                <td><input type="text" ng-model="img" class="form-control"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="button" value="Update" class="btn btn-success w-25" ng-click="update()">
+                    <input type="button" value="Add" class="btn btn-success w-25" ng-click="add()">
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

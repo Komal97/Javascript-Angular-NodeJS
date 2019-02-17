@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var string1 = "Hello";
+        var string2 = "World";
+        var stringconcat = string1.concat(" ", string2, " I'm ", "Here");
+        alert(stringconcat);
+
+        var string3 = "This is 'JavaScript' Tutorials";
+        alert(string3);
+
+        var string4 = 'This is \'JavaScript\' Tutorials';
+        alert(string4);
+
+        var string5 = "This is javascript practice";
+        alert(string5.toUpperCase());
+        alert(string5.toLowerCase());
+        alert(string5.length);
+
+        var string6 = " AB ";
+        var string7 = " CD ";
+        alert(string6.trim().concat(string7.trim()));
+
+        var string8 = "Hello Javascript";
+        alert(string8.replace('Javascript', 'World'));
+
+        var string9 = "The Blue bottle with Blue water is kept on blue table";
+        var result = string9.replace(/blue/g, "green");
+        alert(result);
+
+        var string10 = "The Blue bottle with Blue water is kept on blue table";
+        var result = string10.replace(/blue/gi, "green");
+        alert(result);
+    </script>
+</body>
+
+</html>

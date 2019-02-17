@@ -1,0 +1,180 @@
+.mb-8 {
+    margin-bottom: 80px;
+}
+
+#wrapper .main-banner .carousel .carousel-inner img {
+    height: calc(100vh - 152px);
+    object-fit: cover;
+}
+
+#wrapper .main-banner .carousel .carousel-inner .carousel-item:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#wrapper .main-banner .carousel .carousel-inner .carousel-desc {
+    position: absolute;
+    right: 120px;
+    top: 50%;
+    width: 50%;
+    transform: translateY(-50%);
+    color: white;
+    text-align: justify;
+    z-index: 999;
+}
+
+#wrapper .main-banner .carousel .carousel-inner div:nth-child(2) .carousel-desc {
+    left: 120px !important;
+}
+
+#wrapper main .section .section-content .item-img img {
+    width: 150px;
+    margin: 0 auto 20px;
+    height: 200px;
+    object-fit: cover;
+}
+
+#wrapper main .section .section-content .card-header {
+    font-weight: 700;
+    font-size: 20px;
+    background-color: #A9BE2A;
+    color: white;
+}
+
+#wrapper main .section_1 .book-container {
+    position: relative;
+}
+
+#wrapper main .section_1 .book-container .book-img img {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
+}
+
+#wrapper main .section_1 .section-content .card-header {
+    font-weight: 700;
+    font-size: 20px;
+    background-color: #A9BE2A;
+    color: white;
+}
+
+#wrapper main .section_2 {
+    background-image: url("../images/client.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+#wrapper main .section_2 .section-container {
+    position: relative;
+}
+
+#wrapper main .section_2 .section-container:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#wrapper main .section_2 .section-container {
+    padding: 80px 0px 30px;
+}
+
+#wrapper main .section_2 .section-title {
+    position: relative;
+    z-index: 1000;
+}
+
+#wrapper main .section_2 .section-container .section-content .carousel {}
+
+#wrapper main .section_2 .section-container .section-content .carousel .carousel-item {
+    padding: 50px 120px;
+    z-index: 1000;
+}
+
+#wrapper main .section_2 .section-container .section-content .carousel .carousel-control-prev,
+#wrapper main .section_2 .section-container .section-content .carousel .carousel-control-next {
+    z-index: 1000;
+}
+
+#wrapper .section_3 form .myinput {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#wrapper .section_3 form .myinput:focus {
+    box-shadow: none;
+}
+
+#wrapper .section_3 form input:focus,
+#wrapper .section_3 form textarea:focus{
+    border-color: #4A8741;
+}
+
+#wrapper .section_3 form input {
+    height: 80px;
+    border-radius: 0px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+
+#wrapper .section_3 form textarea {
+    border-radius: 0px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+
+#wrapper .section_3 form .myplaceholder {
+    position: absolute;
+    z-index: 1;
+    top: 1px;
+    left: 10px;
+    transition: 0.5s;
+    font-size: 16px;
+    padding: 30px 10px;
+    margin: 0;
+    width: 150px;
+    pointer-events: none;
+}
+
+#wrapper .section_3 form .btn {
+    height: 80px;
+    width: 100%;
+    border-width: 2px;
+    border-color: #4A8741;
+    color: #4A8741;
+    font-size: 20px;
+    border-radius: 0;
+    background-color: transparent;
+}
+
+#wrapper .section_3 form .btn:hover {
+    height: 80px;
+    width: 100%;
+    background-color: #4A8741;
+    color: white;
+    font-size: 20px;
+}
+
+
+#wrapper .section_3 form .focus .myplaceholder {
+    position: absolute;
+    z-index: 1;
+    top: -50px;
+    left: 10px;
+    transition: 0.5s;
+    font-size: 16px;
+    padding: 30px 10px;
+    margin: 0;
+    color: #4A8741;
+    font-size: 14px;
+    width: 150px;
+}

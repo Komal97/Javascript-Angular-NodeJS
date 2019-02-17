@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../angular.min.js"></script>
+    <script src="routing-min.js "></script>
+    <script src="route.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+</head>
+<body ng-app="demo">
+    <div class="container-fluid">
+        <header class="text-center bg-success p-4">
+            <h2>Header</h2>
+        </header>
+        
+        <div class="row" style="height:500px;">
+            <div class="col-md-3 align-self-center">
+                <ul class="navbar-nav">
+                    <li><a href="#/home">Home</a></li>
+                    <li><a href="#/courses">Courses</a></li>
+                    <li><a href="#/students">Students</a></li>
+                </ul>
+            </div>
+            <div class="col-md-9 align-self-center">
+                <ng-view></ng-view>
+            </div>
+        </div>
+        
+        <footer class="text-center bg-success p-3">
+            <h4>Footer</h4>
+        </footer>
+    </div>
+</body>
+</html>

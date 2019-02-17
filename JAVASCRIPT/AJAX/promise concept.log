@@ -1,0 +1,59 @@
+
+var counter=1;
+console.log("@@@@@");
+var getReturnValue=setTimeout(()=>{       //getReturnValue has already executed before return ahs arrived
+  counter++;
+  if(counter==2){
+  console.log("counter is",counter);
+  return "counter is",counter;
+}
+},5000);
+console.log("************");
+console.log("%%%%%%%%%%%");
+VM255:2 @@@@@
+VM255:10 ************
+VM255:11 %%%%%%%%%%%
+undefined
+VM255:6 counter is 2
+
+var pr=new Promise((resolve,reject)=>{
+ setTimeout(()=>{
+  counter++;
+  if(counter==2){
+  console.log("counter is",counter);
+  resolve("counter is "+counter);
+}
+},5000);
+});
+console.log("************");
+console.log("%%%%%%%%%%%");
+VM383:10 ************
+VM383:11 %%%%%%%%%%%
+undefined
+
+counter=1;
+1
+
+var pr=new Promise((resolve,reject)=>{
+ setTimeout(()=>{
+  counter++;
+  if(counter==2){
+  console.log("counter is",counter);
+  resolve("counter is "+counter);
+}
+},5000);
+});
+console.log("************");
+console.log("%%%%%%%%%%%");
+VM400:10 ************
+VM400:11 %%%%%%%%%%%
+undefined
+VM400:5 counter is 2
+
+pr.then((data)=>console.log("Data is ",data)).catch(err=>console.log("Error is ",err));
+VM510:1 Data is  counter is 2
+Promise {<resolved>: undefined}__proto__: Promise[[PromiseStatus]]: "resolved"[[PromiseValue]]: undefined
+
+//this promise make async call behave as sync because here inside function whill not run until Promise object didnt get filled up
+//correspong to resolve is then and reject is catch.
+

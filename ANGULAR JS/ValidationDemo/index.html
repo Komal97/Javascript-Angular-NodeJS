@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Validations Demo </title>
+
+    <style>
+      .error{
+          color: red;
+      }
+    </style>
+
+    <script src="libs/angular.min.js"></script>
+</head>
+<body ng-app="">
+     <form name="f1" novalidate>          <!-- it disable all the validations of HTML5 -->
+
+        <!-- for validations , ng-model and name attributes are mandatory and values of both should be same -->
+        <!-- required means have to fill answer -->
+        <input pattern="[a-z]{3,10}" ng-model="cname" name="cname" type="text" required placeholder="Type Name"> 
+        <span ng-show="f1.cname.$touched && f1.cname.$pristine" class="error"> Name is required </span>
+        <span ng-show="f1.cname.$touched && f1.cname.$dirty && f1.cname.$invalid" class="error"> Name must be between 3 to 10 characters </span>
+        <!-- <br>{{f1.cname}} -->
+        <br><br>
+        <input ng-model="email" name="email" type="email" placeholder="Type email"> 
+        <br><br>
+        <button type="submit"> Register </button>
+    </form>
+ 
+</body>
+</html>

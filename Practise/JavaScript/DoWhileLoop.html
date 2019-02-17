@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        var number = Number(prompt("Enter Number", ""));
+        var start = 0;
+        while (start <= number) {
+             start ++;
+            if (start % 2 == 0) {
+                continue;
+            }
+            else if(start > 100){
+                break;
+            }
+            document.write(start + "<br>");
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

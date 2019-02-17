@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Practice</title>
+    <script src="angular.min.js"></script>
+    <script src="controller.js"></script>
+    <style>
+        table th {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .arrow-down {
+            position: absolute;
+            top: 50%;
+            margin-left: 10px;
+            border-top: 5px solid red;
+            border-bottom: 5px solid transparent;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+        }
+
+        .arrow-up {
+            position: absolute;
+            top: 35%;
+            margin-left: 10px;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid red;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+        }
+    </style>
+</head>
+
+<body ng-app="myModule">
+    <div ng-controller="myController">
+        Choose to Order By :
+        <select ng-model="ascdsc">
+           <option value="name" selected>Name ASC</option>
+           <option value="dob">Dob ASC</option>
+           <option value="gender">Gender ASC</option>
+           <option value="-salary">Salary DESC</option>
+           <option value="-address">Address DESC</option>
+       </select>
+        <br><br>
+        <table border cellpadding="10">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>DOB</th>
+                    <th>Gender</th>
+                    <th>Salary</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="emp in employee | orderBy:ascdsc">
+                    <td ng-bind="emp.name"></td>
+                    <td ng-bind="emp.dob | date:'dd/MM/yy'"></td>
+                    <td ng-bind="emp.gender | gender"></td>
+                    <td ng-bind="emp.salary"></td>
+                    <td ng-bind="emp.address"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <hr><br>
+
+        <ul ng-repeat="emp in employee">
+            <li>{{emp.name}}
+                <ul>
+                    <li ng-bind="emp.dob | date:'dd/MM/yy'"></li>
+                    <li ng-bind="emp.gender | gender"></li>
+                    <li ng-bind="emp.salary"></li>
+                    <li ng-bind="emp.address"></li>
+                </ul>
+            </li>
+        </ul>
+
+        <br>
+        <hr><br> Change the View Style :
+        <select ng-model="view">
+            <option value="table-view.html">Table View</option>
+            <option value="list-view.html">List View</option>
+        </select>
+        <br><br>
+        <div ng-include="view"></div>
+
+        <br>
+        <hr><br> Show Salary : <input type="checkbox" ng-model="viewhide">
+        <br><br>
+        <table border cellpadding="10" width="60%">
+            <thead>
+                <tr>
+                    <th ng-click="changeOrder('name')">Name <span ng-class="changeClass('name')"></span></th>
+                    <th ng-click="changeOrder('dob')">Dob <span ng-class="changeClass('dob')"></span></th>
+                    <th ng-click="changeOrder('gender')">Gender <span ng-class="changeClass('gender')"></span></th>
+                    <th ng-click="changeOrder('salary')" ng-show="viewhide">Salary <span ng-class="changeClass('salary')"></span></th>
+                    <th ng-click="changeOrder('address')">Address <span ng-class="changeClass('address')"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="emp in employee | orderBy:colasc:colrevrse">
+                    <td>{{emp.name}}</td>
+                    <td>{{emp.dob | date:'dd/MM/yy'}}</td>
+                    <td>{{emp.gender|gender}}</td>
+                    <td ng-show="viewhide">{{emp.salary}}</td>
+                    <td>{{emp.address}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <hr><br>
+
+        <table border cellpadding="10">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Likes</th>
+                    <th>Dislikes</th>
+                    <th>Likes/Dislikes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="lang in lang">
+                    <td>{{lang.name}}</td>
+                    <td>{{lang.likes}}</td>
+                    <td>{{lang.dislikes}}</td>
+                    <td>
+                        <input type="button" value="Like" ng-click="incrimentLikes(lang)">
+                        <input type="button" value="Dislike" ng-click="incrimentDislikes(lang)">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+
+</html>

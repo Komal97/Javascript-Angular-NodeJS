@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="angular.min.js"></script>
+    <script>
+        var myApp = angular.module("myModule", []);
+
+        myApp.controller("myController", function($scope) {
+            var countries = [{
+                    Name: "India",
+                    Cities: [{
+                            Name: "delhi"
+                        },
+                        {
+                            Name: "punjab"
+                        },
+                        {
+                            Name: "u.p"
+                        }
+                    ]
+                },
+                {
+                    Name: "London",
+                    Cities: [{
+                            Name: "london1"
+                        },
+                        {
+                            Name: "london2"
+                        },
+                        {
+                            Name: "london3"
+                        }
+                    ]
+                },
+                {
+                    Name: "Singapore",
+                    Cities: [{
+                            Name: "singa1"
+                        },
+                        {
+                            Name: "singa2"
+                        },
+                        {
+                            Name: "simga3"
+                        }
+                    ]
+                }
+            ];
+            $scope.country = countries;
+
+
+            var languages = [{
+                    Name: "C#",
+                    Likes: 0,
+                    Dislikes: 0
+                },
+                {
+                    Name: "C",
+                    Likes: 0,
+                    Dislikes: 0
+                },
+                {
+                    Name: "C++",
+                    Likes: 0,
+                    Dislikes: 0
+                },
+                {
+                    Name: "Java",
+                    Likes: 0,
+                    Dislikes: 0
+                }
+            ];
+            $scope.language = languages;
+
+            $scope.incri = function(i) {
+                i.Likes++;
+            }
+
+            $scope.decri = function(i) {
+                i.Dislikes++;
+            }
+
+            var employees = [{
+                    Name: "Sunny",
+                    Dob: new Date("July 20, 1998"),
+                    Gender: "Male",
+                    Salary: "20000.88"
+                },
+                {
+                    Name: "Suresh",
+                    Dob: new Date("18 February, 1994"),
+                    Gender: "Male",
+                    Salary: "18000.88"
+                },
+                {
+                    Name: "Rajkumar",
+                    Dob: new Date("01 August, 1992"),
+                    Gender: "Male",
+                    Salary: "12000.88"
+                },
+                {
+                    Name: "Khusbu",
+                    Dob: new Date("25 July, 1991"),
+                    Gender: "Female",
+                    Salary: "28000.88"
+                },
+                {
+                    Name: "Mansi",
+                    Dob: new Date("15 August, 1995"),
+                    Gender: "Female",
+                    Salary: "50000.88"
+                }
+            ];
+            $scope.employee = employees;
+
+            $scope.rowLimit = 2;
+
+            $scope.sortCol = "Name";
+            $scope.reverseCol = false;
+            $scope.sortData = function(c) {
+                $scope.reverseCol = ($scope.sortCol == c) ? !$scope.reverseCol : false;
+                $scope.sortCol = c;
+            }
+            
+            $scope.getSortClass = function(c){
+                if($scope.sortCol == c){
+                    return $scope.reverseCol ? 'arrow-down' : 'arrow-up'
+                }
+                return '';
+            }
+        });
+    </script>
+     <style>
+        table th {
+            position: relative;
+        }
+
+        .arrow-down {
+            position: absolute;
+            top: 50%;
+            margin-left: 20px;
+            border-top: 5px solid red;
+            border-bottom: 5px solid transparent;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+        }
+
+        .arrow-up {
+            position: absolute;
+            top: 35%;
+            margin-left: 20px;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid red;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+        }
+
+        table th {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body ng-app="myModule">
+    <div ng-controller="myController">
+        <ul ng-repeat="country  in country">
+            <li>{{country.Name}}</li>
+            <ul ng-repeat="city in country.Cities">
+                <li>{{city.Name}}</li>
+            </ul>
+        </ul>
+
+        <br><br>
+        <hr><br><br>
+
+        <table border="1" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Likes</th>
+                    <th>Dislikes</th>
+                    <th>Likes/Dislikes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="lang in language">
+                    <td>{{lang.Name}}</td>
+                    <td>{{lang.Likes}}</td>
+                    <td>{{lang.Dislikes}}</td>
+                    <td>
+                        <input type="button" value="Likes" ng-click="incri(lang)">
+                        <input type="button" value="Dislikes" ng-click="decri(lang)">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br><br>
+        <hr><br><br>
+
+        <span>Number of Rows : </span><input type="number" ng-model="rowLimit">
+        <br>
+        <br>
+        <table border="1" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>DOB</th>
+                    <th>Gender</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employee in employee | limitTo: rowLimit">
+                    <td>{{employee.Name}}</td>
+                    <td>{{employee.Dob | date:"dd/MM/yy"}}</td>
+                    <td>{{employee.Gender}}</td>
+                    <td>{{employee.Salary}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br><br>
+        <hr><br><br>
+
+        <table border="1" cellpadding="10" width="40%">
+            <thead>
+                <tr>
+                    <th ng-click="sortData(Name)">Name <span ng-class="getSortClass('Name')"></span></th>
+                    <th ng-click="sortData(Dob)">DOB <span ng-class="getSortClass('Dob')"></span></th>
+                    <th ng-click="sortData(Gender)">Gender <span ng-class="getSortClass('Gender')"></span></th>
+                    <th ng-click="sortData(Salary)">Salary <span ng-class="getSortClass('Salary')"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employee in employee | orderBy:sortCol:reverseCol">
+                    <td>{{employee.Name}}</td>
+                    <td>{{employee.Dob | date:"dd/MM/yy"}}</td>
+                    <td>{{employee.Gender}}</td>
+                    <td>{{employee.Salary}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

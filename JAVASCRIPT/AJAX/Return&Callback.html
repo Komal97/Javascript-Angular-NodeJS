@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <style>
+        .size{
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+    
+    <script>
+
+       function asyncCall(){
+           //ajax(PrintMe);  here we pass a function which has to be called when task is completed 
+
+           //instead of writing "PrintMe" separately, we can write that statements in arrow function here
+           ajax((t)=>console.log("T of arrow function is : ",t));
+           console.log("I will run ..."); //it will run before showing "done.." in console as that ajax call is hand over to
+                                          //web API and in that time ,rest of the statements will run
+       }
+
+       function ajax(fn){
+           /*
+           we cannot return values in async calls - neither in AJAX(here) nor in setTimeOut because
+           the function which has to return value has already executed its starting line so when it returns
+           value , it can be stored in any variable because pointer or code is somewhere else in the code
+           it just has to calculate after that particular time (which was alloted to web API) so
+           soln 1: we have to call a function which will give value.
+           soln 2: use concept of Promise
+           */
+           console.log("First line..")
+           var searchbox=document.querySelector("#search").value;
+           var xmlHttpRqst=new XMLHttpRequest();
+           var url="http://api.giphy.com/v1/gifs/search?q="+searchbox+"&api_key=dc6zaTOxFJmzC";
+           xmlHttpRqst.open("GET",url);
+           xmlHttpRqst.onreadystatechange=function(){
+               if(xmlHttpRqst.readyState==4 && xmlHttpRqst.status==200){
+                   console.log("Done...");
+                   drawimages(xmlHttpRqst.responseText);
+                   //return "done";        we cannot return a value conditionally
+                   fn("Done");            //since we have command to printme and it is called back when task is completed
+                                          //that is why it is called "callback" function
+               }
+           }
+           xmlHttpRqst.send(null);
+           console.log("Last line ...")
+       }
+
+       function PrintMe(t){        
+           console.log("T is : ",t);
+       }
+
+       function drawimages(json){
+           var object=JSON.parse(json);
+           
+           object.data.forEach((currentImages)=>{
+            var img=document.createElement("img");
+            img.className="size";
+            img.src=currentImages.images.original.url;
+            document.querySelector("#output").appendChild(img);
+           });
+
+       }
+    </script>
+</head>
+<body>
+    <h1> CALLBACK HELL EX and SOLUTION </h1>
+    <input type="text" id="search" placeholder="Type to search" >
+    <button onclick="asyncCall()"> Call T </button>
+    <div id="output"> </div>
+</body>
+</html>

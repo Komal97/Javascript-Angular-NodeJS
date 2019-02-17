@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        var myArray = new Array(3);
+
+        for (i = 0; i < 3; i++) {
+            myArray[i] = new Array(3);
+        }
+        myArray[0][0] = 1;
+        myArray[0][1] = 2;
+        myArray[0][2] = 3;
+
+        myArray[1][0] = 4;
+        myArray[1][1] = 5;
+        myArray[1][2] = 6;
+
+        myArray[2][0] = 7;
+        myArray[2][1] = 8;
+        myArray[2][2] = 9;
+
+        for (i = 0; i < 3; i++) {
+            for (j = 0; j < 3; j++) {
+                document.write(myArray[i][j] + "\t");
+            }
+            document.write("<br>");
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!--
+    <script>
+        var string1 = "This is javascript tutorials";
+        var str = string1.substr(0, 10);
+        alert(str);
+    </script>
+-->
+
+    <!--
+    <script>
+        var string1 = "This is javascript tutorials";
+        var str = string1.substring(0, 15);
+        alert(str);
+    </script>
+-->
+
+    <!--
+    <script>
+        var string1 = "This is javascript tutorials";
+        var str = string1.slice(0, 20);
+        alert(str);
+    </script>
+-->
+
+    <!--
+    <script>
+        var string1 = "This is javascript tutorials";
+        var str = string1.substr(0, 10);
+        alert(str);
+    </script>
+-->
+
+    <!--
+    <script>
+        var string1 = "This is JavaScript";
+        var str = string1.indexOf("i");
+        var str = string1.lastIndexOf("i");
+        alert(str);
+    </script>
+-->
+
+    <script>
+        function getEmailDomain() {
+            var url = document.getElementById("url").value;
+            var email = url.substring(0,url.indexOf("@"));
+            var domain = url.substring(url.indexOf("@")+1);
+            document.getElementById("email").value = email;
+            document.getElementById("domain").value = domain;
+        }
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>Url</td>
+            <td><input type="text" id="url"></td>
+        </tr>
+        <tr>
+            <td>Email Part</td>
+            <td><input type="text" id="email"></td>
+        </tr>
+        <tr>
+            <td>Domain Part</td>
+            <td><input type="text" id="domain"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="button" value="Get Email & Domain" onclick="getEmailDomain()"></td>
+        </tr>
+    </table>
+</body>
+</html>
