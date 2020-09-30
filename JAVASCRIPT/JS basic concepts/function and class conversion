@@ -1,0 +1,130 @@
+class A{
+}
+undefined
+
+typeof A;
+"function"
+
+function Item(id,name,price){
+ this.id=id
+ this.name=name;
+ this.price=price;
+ console.log("I am a function constructor");
+}
+undefined
+
+var mobile=new Item(1001,"Apple",9900);
+VM197:5 I am a function constructor
+
+//if we assign variable using 'this' then it is a function constructor
+//arrow function cannot become function constructor
+
+
+mobile;
+Item {id: 1001, name: "Apple", price: 9900}
+
+typeof mobile;
+"object"
+
+mobile instanceof Item;
+true
+
+function Item(id,name,price){
+ this.id=id
+ this.name=name;
+ this.price=price;
+ this.markForDelete=false;
+
+ this.toggle=function(){
+  return (this.markForDelete=!this.markForDelete);
+ }
+ console.log("I am a function constructor");
+}
+undefined
+
+mobile;
+Item {id: 1001, name: "Apple", price: 9900}
+
+var mobile=new Item(1001,"Apple",9900);
+VM510:10 I am a function constructor
+undefined
+
+mobile;
+Item {id: 1001, name: "Apple", price: 9900, markForDelete: false, toggle: ƒ}
+
+mobile.toggle();
+true
+
+mobile;
+Item {id: 1001, name: "Apple", price: 9900, markForDelete: true, toggle: ƒ}
+
+Item.prototype.print=function(){
+  console.log(`Id is ${this.id} and Name is ${this.name} and Item is ${this.price}`);
+}
+ƒ (){
+  console.log(`Id is ${this.id} and Name is ${this.name} and Item is ${this.price}`);
+}
+//Item is func and if we write Item.print them it will bind function with function 
+but if we write Item.prototype.print then it will consider Item as class so for function 
+oriented programming ,write Name.function and for object oriented programming ,use Name.prototype.function .....
+all this is done if we want to work with function as class .
+
+mobile.print();
+VM721:2 Id is 1001 and Name is Apple and Item is 9900
+undefined
+
+Item.show=function(){
+ console.log("I am a show");
+}
+ƒ (){
+ console.log("I am a show");
+}
+
+mobile.show();
+VM873:1 Uncaught TypeError: mobile.show is not a function
+    at eval (eval at <anonymous> (:1:8), <anonymous>:1:8)
+    at <anonymous>:1:8
+(anonymous) @ VM873:1
+(anonymous) @ VM851:1
+
+var tablet=new Item(1002,"Tablet",9999);
+VM510:10 I am a function constructor
+undefined
+
+tablet.print();
+VM721:2 Id is 1002 and Name is Tablet and Item is 9999
+undefined
+
+var f="Hello";   //f is kind of string data type but actually f is an object of String class.
+undefined
+
+f instanceof String;
+false
+
+f instanceof string;
+VM893:1 Uncaught ReferenceError: string is not defined
+    at eval (eval at <anonymous> (:1:8), <anonymous>:1:14)
+    at <anonymous>:1:8
+(anonymous) @ VM893:1
+(anonymous) @ VM851:1
+
+typeof f;
+"string"
+
+String.prototype.myfunction=function(){
+  console.log("This is my function");
+}
+ƒ (){
+  console.log("This is my function");
+}
+
+f.myfunction();
+VM934:2 This is my function
+undefined
+
+Item.show();
+VM825:2 I am a show
+undefined
+//this works as static because here we call function by classname which here is a function (function binding with function concept)
+//non-static because we call function by object name which here is a class (function binding with class which we bind using .prototype)
+

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> CRUD App </title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="design.css">
+    <script src="item.js"></script>
+    <script src="itemOperations.js"></script>
+    <script src="controller.js"></script>
+</head>
+<body>
+    
+    <br><br>
+    <div class="container">
+    <fieldset>
+        <legend> ITEM DETAILS </legend>
+
+        <div class="form-group">
+             <label for=""> Item ID </label>
+             <input type="text" placeholder="Enter ItemID" id="itemid" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for=""> Mobile Name </label>
+            <input type="text" placeholder="Enter name" id="name" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for=""> Price </label>
+            <input type="range"  min="0" max="100" step="10" id="price" class="form-control"> 
+            <output id="output"></output>
+        </div>
+
+        <div class="form-group">
+            <label for=""> Image URL </label>
+            <input type="text" placeholder="Enter url" id="url" class="form-control">
+        </div>
+
+         <div class="form-group">
+                <label for=""> Colour </label>
+                <input type="color"  id="color" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for=""> Date Of launch </label>
+            <input type="date" id="date" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for=""> Description Of Mobile </label>
+           <textarea placeholder="Enter description" id="description" row="10" cols="20" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+             <button id="add" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> &nbsp;Add </button>
+             <button id="deletebtn" class="btn btn-danger"> <span class="glyphicon glyphicon-trash"></span> &nbsp;Delete </button>
+             <button id="search" class="btn btn-info"><span class="glyphicon glyphicon-search"></span> &nbsp; Search </button>
+             <button id="update" class="btn btn-warning"><span class="glyphicon glyphicon-repeat"></span> &nbsp; Update </button>
+             <button id="sortbyid" class="btn btn-info"><span class="glyphicon glyphicon-sort-by-order"></span> &nbsp; Sort By <br> ID </button>
+             <button id="sortbyname" class="btn btn-info"><span class="glyphicon glyphicon-sort-by-alphabet"></span> &nbsp; Sort By <br>&nbsp;&nbsp; Name </button>
+             <button id="save" class="btn btn-success"><span class="glyphicon glyphicon-save"></span> &nbsp; Save </button>
+             <button id="load" class="btn btn-primary"><span class="glyphicon glyphicon-upload"></span> &nbsp; Load</button>
+             <button id="loadfromserver" class="btn btn-info"><span class="glyphicon glyphicon-upload"></span> &nbsp; Load From <br> Server </button>
+             <button id="clear" class="btn btn-default"><span class="glyphicon glyphicon-remove-sign"></span> &nbsp; Clear All </button>
+        </div>
+    </fieldset>
+    
+    <h4>Total Records are : <span id="total">0</span> &nbsp;&nbsp; Mark : <span id="markrecord">0</span> &nbsp;&nbsp; UnMark : <span id="unmark">0</span></h4>
+    <br><br>
+    <fieldset>
+        <legend> ITEM LIST</legend>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td> Item ID </td>
+                    <td> Mobile Name </td>
+                    <td> Price (in k) </td>
+                    <td> Image </td>
+                    <td> Color </td>
+                    <td> Date Of Launch </td>
+                    <td> Description Of Mobile </td>     
+                    <td> Operations </td>                                                                                                                   
+                </tr>
+            </thead>
+
+            <tbody id="itemtable"> </tbody>
+        </table>
+    </fieldset>
+</div>
+</body>
+</html>

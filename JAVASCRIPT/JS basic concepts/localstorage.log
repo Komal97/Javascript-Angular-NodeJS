@@ -1,0 +1,41 @@
+itemOperations.itemList;
+[]
+ 
+itemOperations.itemList;           //after adding 1 item
+[Item]
+
+var json=JSON.stringify(itemOperations.itemList);           //converting object into string (in JSON format) 
+undefined
+
+json;
+"[{"id":"101","name":"lenovo","desc":"hello","price":"11","color":"#000000","url":"abcd.com","date":"2018-01-18","markForDelete":false}]"
+
+typeof json;
+"string"
+
+localStorage;                                              //object of localstorage ,localStorage means storage on disk , used to ead local data on client side
+Storage {length: 0}
+
+localStorage.mydata=json;                                 // mydata is a key is localStorage object created at this stage only
+"[{"id":"101","name":"lenovo","desc":"hello","price":"11","color":"#000000","url":"abcd.com","date":"2018-01-18","markForDelete":false}]"
+
+localStorage;                                           
+Storage {mydata: "[{"id":"101","name":"lenovo","desc":"hello","price….com","date":"2018-01-18","markForDelete":false}]", length: 1}
+
+var myobject={};
+undefined
+
+myobject.a=100;                                          // here alse 'a' is a key creating at this stage only and assigning value to it
+100
+
+myobject;
+{a: 100}
+
+localStorage;
+Storage {mydata: "[{"id":"101","name":"lenovo","desc":"hello","price….com","date":"2018-01-18","markForDelete":false}]", length: 1}
+
+localStorage.clear();                                   // for clearing the localStorage
+undefined
+
+localStorage;
+Storage {length: 0}

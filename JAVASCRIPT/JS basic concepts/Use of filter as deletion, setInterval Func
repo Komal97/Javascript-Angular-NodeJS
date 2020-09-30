@@ -1,0 +1,26 @@
+var a=[10,20,30,40,50,10,20,30,10];
+undefined
+
+a=a.filter(b=>b!=10);
+(6) [20, 30, 40, 50, 20, 30]
+
+a=a.filter(b=>b!=10);               //we put back the values in the same array which are not 10, so for multiple deletions ,use filter and not splice
+(6) [20, 30, 40, 50, 20, 30]
+
+var d=setInterval(()=>{                     //used to hit server after particular time
+                                            //and always keep it in a separate variable so that we can terminate them whenever we require
+ console.log("this is my function");
+},2000);
+undefined
+VM64:2 this is my function
+VM64:2 this is my function
+VM64:2 this is my function
+VM64:2 this is my function
+VM64:2 this is my function
+VM64:2 this is my function
+
+clearInterval(d)                            //used to stop or clear
+undefined
+
+
+

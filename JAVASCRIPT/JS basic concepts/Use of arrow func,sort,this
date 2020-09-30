@@ -1,0 +1,166 @@
+USE OF ARROW FUNCTION,THIS VARIABLE , SORT
+-------------------------------------------
+
+var object={ 
+arr:[10,20,30,5,11,23],
+ evenOdd(){
+ }
+}
+undefined
+
+object.evenOdd();
+undefined
+
+var object={ 
+arr:[10,20,30,5,11,23],
+ evenOdd(){
+  console.log("this is ",this);
+ }
+}
+undefined
+
+var object={ 
+arr:[10,20,30,5,11,23],
+evenArray:[],
+oddArray:[], 
+ evenOdd(){
+  console.log("this is ",this);
+  this.arr.forEach(function(num){ 
+     if(num%2==0){
+    this.evenArray.push(num);   //here 'this' is of array func but evenArray is enclosed under 'object' object
+  }
+   else{
+  this.oddArray.push(num); 
+ }
+});
+ }
+}
+     
+undefined
+
+object.evenArray();
+VM285:1 Uncaught TypeError: object.evenArray is not a function
+    at <anonymous>:1:8
+(anonymous) @ VM285:1
+object.evenOdd();
+VM275:6 this is  {arr: Array(6), evenArray: Array(0), oddArray: Array(0), evenOdd: ƒ}
+VM275:9 Uncaught TypeError: Cannot read property 'push' of undefined
+    at <anonymous>:9:20
+    at Array.forEach (<anonymous>)
+    at Object.evenOdd (<anonymous>:7:12)
+    at <anonymous>:1:8
+(anonymous) @ VM275:9
+evenOdd @ VM275:7
+(anonymous) @ VM302:1
+
+var object={ 
+arr:[10,20,30,5,11,23],
+evenArray:[],
+oddArray:[], 
+evenOdd(){
+  console.log("this is ",this);
+  var that=this;
+  this.arr.forEach(function(num){
+  console.log("ForEach this is :",that);
+     if(num%2==0){
+    that.evenArray.push(num);   
+  }
+   else{
+  that.oddArray.push(num); 
+}
+});
+ }
+}
+     
+undefined
+object.evenOdd();
+VM429:6 this is  {arr: Array(6), evenArray: Array(0), oddArray: Array(0), evenOdd: ƒ}
+VM429:9 ForEach this is : {arr: Array(6), evenArray: Array(0), oddArray: Array(0), evenOdd: ƒ}
+VM429:9 ForEach this is : {arr: Array(6), evenArray: Array(1), oddArray: Array(0), evenOdd: ƒ}
+VM429:9 ForEach this is : {arr: Array(6), evenArray: Array(2), oddArray: Array(0), evenOdd: ƒ}
+VM429:9 ForEach this is : {arr: Array(6), evenArray: Array(3), oddArray: Array(0), evenOdd: ƒ}
+VM429:9 ForEach this is : {arr: Array(6), evenArray: Array(3), oddArray: Array(1), evenOdd: ƒ}
+VM429:9 ForEach this is : {arr: Array(6), evenArray: Array(3), oddArray: Array(2), evenOdd: ƒ}
+undefined
+
+object.evenArray;
+(3) [10, 20, 30]
+
+ var object={ 
+ arr:[10,20,30,5,11,23],
+evenArray:[],
+oddArray:[], 
+evenOdd(){
+  console.log("this is ",this);
+  //var that=this;
+  this.arr.forEach(num=>{                       
+  console.log("ForEach this is :",this);  //here this is bind to object ie enclosing in main object and not array because of arrow function because arrow funtion is pure function. It is not lexical , it carries on main object .
+     if(num%2==0){
+    this.evenArray.push(num);   
+  }
+   else{
+  this.oddArray.push(num); 
+}
+});
+ }
+}     
+undefined
+
+var arr2=[ 99,1 , 88,2 ,4,100];
+undefined
+arr2.sort();                  //we have to tell the basis for sorting like asc or desc
+(6) [1, 100, 2, 4, 88, 99]
+
+
+arr2.sort((a,b)=> console.log("A is "+a,"B is"+b));
+VM608:1 A is 1 B is100
+VM608:1 A is 100 B is2
+VM608:1 A is 2 B is4
+VM608:1 A is 4 B is88
+VM608:1 A is 88 B is99
+(6) [1, 100, 2, 4, 88, 99]
+
+arr2.sort((a,b)=>a-b);      //asc order
+(6) [1, 2, 4, 88, 99, 100]
+
+arr2.sort((a,b)=>b-a);     //desc order
+(6) [100, 99, 88, 4, 2, 1]
+
+var names=["anil","ajay","amit"];
+undefined
+
+names.sort((a,b)=> a.localeCompare(b));      // to sort alphabetic variables
+(3) ["ajay", "amit", "anil"]
+
+"anil".localeCompare("ajay");
+1
+
+"ajay".localeCompare("ajay");
+0
+
+"ajay".localeCompare("anil");
+-1
+
+var arr3=[10,20,30,40];
+undefined
+
+arr3.forEach((j)=>console.log(j));
+VM903:1 10
+VM903:1 20
+VM903:1 30
+VM903:1 40
+undefined
+
+arr3.forEach((j,i)=>console.log(j,i));                // it is 2 argument where j=value and i=index (it takes automatically)
+VM906:1 10 0
+VM906:1 20 1
+VM906:1 30 2
+VM906:1 40 3
+undefined
+
+arr3.forEach((j,i,n)=>console.log(j,i,n));          // it is 3 argument where j=value,i=index,n=whole array(it takes automatically)
+hVM909:1 10 0 (4) [10, 20, 30, 40]
+VM909:1 20 1 (4) [10, 20, 30, 40]
+VM909:1 30 2 (4) [10, 20, 30, 40]
+VM909:1 40 3 (4) [10, 20, 30, 40]
+undefined

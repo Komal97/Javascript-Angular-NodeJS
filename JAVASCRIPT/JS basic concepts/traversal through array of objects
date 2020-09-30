@@ -1,0 +1,68 @@
+var students = [
+  { 
+    name : "Mike",
+    track: "track-a",
+    achievements: 23,
+    points : 400,
+  },
+
+  { 
+    name : "james",
+    track: "track-a",
+    achievements: 2,
+    points : 21,
+  },  
+]
+undefined
+
+students.forEach(function(items,index){  
+  console.log(items); 
+});
+VM484:3 {name: "Mike", track: "track-a", achievements: 23, points: 400}
+VM484:3 {name: "james", track: "track-a", achievements: 2, points: 21}
+undefined
+
+students.forEach(function(items,index){       //for array
+  for(let key in items){                      //for objects inside array
+  console.log(items[key]); 
+}
+});
+VM500:3 Mike
+VM500:3 track-a
+VM500:3 23
+VM500:3 400
+VM500:3 james
+VM500:3 track-a
+VM500:3 2
+VM500:3 21
+undefined
+
+students.forEach(function(items,index){
+  for(let key in items){
+  console.log(key); 
+}
+});
+VM520:3 name
+VM520:3 track
+VM520:3 achievements
+VM520:3 points
+VM520:3 name
+VM520:3 track
+VM520:3 achievements
+VM520:3 points
+undefined
+
+students.forEach(function(items,index){
+  for(let key in items){
+  console.log(items[key],index); 
+}
+});
+VM546:3 Mike 0
+VM546:3 track-a 0
+VM546:3 23 0
+VM546:3 400 0
+VM546:3 james 1
+VM546:3 track-a 1
+VM546:3 2 1
+VM546:3 21 1
+undefined
