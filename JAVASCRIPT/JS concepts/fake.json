@@ -1,9 +1,0 @@
-{"items":[{"id":"101","name":"lenovo","desc":"bsswkwj","price":"11","color":"#ff80ff","url":"http://stat.homeshop18.com/homeshop18/images/productImages/81/lava-a67-dual-sim-android-mobile-phone-medium_3a86d70832ad27694f49cea1aba8dd81.jpg","date":"2018-01-20","markForDelete":false},{"id":"102","name":"lenovo","desc":"bsswkwj","price":"11","color":"#00ff80","url":"http://stat.homeshop18.com/homeshop18/images/productImages/81/lava-a67-dual-sim-android-mobile-phone-medium_3a86d70832ad27694f49cea1aba8dd81.jpg","date":"2018-01-20","markForDelete":false}]}
-
-//items is here key(because data is always in the form of key-value pair) 
-
-json-server --watch fake.json --port 5000        //used to start
-                             
-localhost:5000/items                             
- 
-//write in browser "localhost:5000/items (items is here key, because data is always in the form of key-value pair) 
