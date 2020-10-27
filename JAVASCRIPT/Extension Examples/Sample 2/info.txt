@@ -1,0 +1,18 @@
+Activity Tracker
+https://github.com/mtbar131/webactivity_stats
+https://swizec.com/blog/build-a-chrome-extension-from-idea-to-launch-in-an-afternoon/
+https://product.hubspot.com/blog/tech-talk-chrome-extensions
+https://blog.hubspot.com/marketing/best-chrome-extensions
+https://github.com/nashvail/Chronus    - https://medium.com/@nashvail/i-built-a-chrome-extension-to-control-my-online-time-wastage-and-it-worked-bd1168e03b01
+https://activitywatch.net/
+https://www.instructables.com/Activity-Logger/
+https://github.com/anuko/timetracker
+
+https://developer.chrome.com/extensions
+https://developer.chrome.com/extensions/getstarted
+https://www.youtube.com/watch?v=e3McMaHvlBY&list=PLCA101D6A85FE9D4B&index=4
+https://developer.chrome.com/extensions/overview
+https://developer.chrome.com/extensions/user_interface#icons
+
+https://developer.chrome.com/extensions/api_index
+https://developer.chrome.com/extensions/devguide
